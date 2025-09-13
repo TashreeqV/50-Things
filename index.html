@@ -15,20 +15,6 @@
       position: relative;
       overflow-x: hidden;
     }
-    /* subtle decorative hearts background */
-    body::before {
-      content: '❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️';
-      position: absolute;
-      top: -2rem;
-      left: -5%;
-      font-size: 5rem;
-      color: rgba(255, 107, 129, 0.05);
-      pointer-events: none;
-      width: 110%;
-      white-space: nowrap;
-      overflow: hidden;
-      transform: rotate(-20deg);
-    }
     header {
       background: linear-gradient(90deg, #ff6b81, #ff85a2);
       color: white;
@@ -37,8 +23,6 @@
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1;
     }
     header h1 {
       margin: 0;
@@ -53,31 +37,32 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       border: 1px solid #f3e0e6;
-      position: relative;
-      z-index: 1;
     }
     ul {
       list-style: none;
       padding: 0;
-      column-count: 2;
-      column-gap: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
     }
     li {
-      margin: 1rem 0;
-      padding-left: 2rem;
-      position: relative;
       font-size: 1.1rem;
       line-height: 1.8;
       transition: transform 0.2s, background 0.2s;
+      display: flex;
+      align-items: flex-start;
+      break-inside: avoid;
     }
-    li::before {
-      content: "❤️";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.3rem;
+    li span.heart {
+      margin-right: 0.5rem;
       color: #ff3b57;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      width: 1.3rem;
+      text-align: left;
+    }
+    li span.text {
+      display: inline-block;
     }
     li:hover {
       transform: translateX(5px);
@@ -86,7 +71,10 @@
     }
     @media (max-width: 700px) {
       ul {
-        column-count: 1;
+        grid-template-columns: 1fr;
+      }
+      li span.heart {
+        width: auto;
       }
     }
     .irreplaceable {
@@ -109,56 +97,56 @@
   </header>
   <main>
     <ul>
-      <li>His unconditional love and support.</li>
-      <li>The way he makes us laugh with his dad jokes.</li>
-      <li>His wisdom and guidance through life's challenges.</li>
-      <li>His ability to fix anything.</li>
-      <li>His patience and understanding, even when we make mistakes.</li>
-      <li>His unwavering belief in our potential.</li>
-      <li>His strength and resilience, serving as a role model.</li>
-      <li>His ability to calm us down during stressful times.</li>
-      <li>The way he listens, offering advice only when needed.</li>
-      <li>His knack for telling the best stories (even though some stories might have been better if we didn't hear them, Daddy knows what we're talking about).</li>
-      <li>The sacrifices he makes for the family.</li>
-      <li>His enthusiasm for our interests and hobbies.</li>
-      <li>The way he surprises us with little acts of kindness.</li>
-      <li>His culinary skills, especially when it comes to braai.</li>
-      <li>The way he cheers us on.</li>
-      <li>The way he respects our individuality and encourages independence.</li>
-      <li>The way he cherishes family traditions and holidays.</li>
-      <li>His humility and gratitude for life's blessings.</li>
-      <li>The comfort of knowing he's always just a phone call away.</li>
-      <li>His playful spirit that keeps us young at heart.</li>
-      <li>The way he teaches us to be strong.</li>
-      <li>His unwavering loyalty and commitment to the family.</li>
-      <li>The lessons he teaches us about responsibility and accountability.</li>
-      <li>His contagious laughter that fills the room.</li>
-      <li>The way he stands up for us and protects us.</li>
-      <li>His openness to learning from us as well.</li>
-      <li>The pride he shows in our achievements, big or small.</li>
-      <li>The calm and collected demeanor he maintains in tough situations.</li>
-      <li>The way he encourages us to pursue our dreams relentlessly.</li>
-      <li>The way he celebrates our uniqueness and differences.</li>
-      <li>His supportive nature, backing us even when we doubt ourselves.</li>
-      <li>The creativity and imagination he inspires in us.</li>
-      <li>His ability to find joy in the simple things.</li>
-      <li>His dedication to personal growth and lifelong learning.</li>
-      <li>His sense of humor, often the highlight of any gathering.</li>
-      <li>The way he instills confidence and self-belief in us.</li>
-      <li>His gentle encouragement to step out of our comfort zones.</li>
-      <li>The comfort and reassurance he provides.</li>
-      <li>The security we feel when he's around.</li>
-      <li>The bond we share that grows stronger each day.</li>
-      <li>The fact that he drops everything when we need him, especially if it has to do with driving (he openly dislikes driving).</li>
-      <li>His unwavering support for things and people he believes in.</li>
-      <li>The important life lessons he has taught us, which we will pass on to our children one day.</li>
-      <li>His love and dedication to his grandchildren.</li>
-      <li>The everyday messages asking how our day was.</li>
-      <li>The fact that he tells us every day that he loves us.</li>
-      <li>His dedication to providing for his loved ones, even when he is unwell.</li>
-      <li>The loudest snorer known to mankind (sneezes as well).</li>
-      <li>His ability to make everything seem easy when it isn't.</li>
-      <li>The amount of pride he has when it comes to family</li>
+      <li><span class="heart">❤️</span><span class="text">His unconditional love and support.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he makes us laugh with his dad jokes.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His wisdom and guidance through life's challenges.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His ability to fix anything.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His patience and understanding, even when we make mistakes.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His unwavering belief in our potential.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His strength and resilience, serving as a role model.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His ability to calm us down during stressful times.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he listens, offering advice only when needed.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His knack for telling the best stories (Although some stories we probably didn't need to hear, Daddy knows what we're talking about).</span></li>
+      <li><span class="heart">❤️</span><span class="text">The sacrifices he makes for the family.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His enthusiasm for our interests and hobbies.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he surprises us with little acts of kindness.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His culinary skills, especially when it comes to braai.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he cheers us on.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he respects our individuality and encourages independence.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he cherishes family traditions and holidays.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His humility and gratitude for life's blessings.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The comfort of knowing he's always just a phone call away.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His playful spirit that keeps us young at heart.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he teaches us to be strong.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His unwavering loyalty and commitment to the family.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The lessons he teaches us about responsibility and accountability.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His contagious laughter that fills the room.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he stands up for us and protects us.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His openness to learning from us as well.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The pride he shows in our achievements, big or small.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The calm and collected demeanor he maintains in tough situations.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he encourages us to pursue our dreams relentlessly.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he celebrates our uniqueness and differences.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His supportive nature, backing us even when we doubt ourselves.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The creativity and imagination he inspires in us.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His ability to find joy in the simple things.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His dedication to personal growth and lifelong learning.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His sense of humor, often the highlight of any gathering.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The way he instills confidence and self-belief in us.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His gentle encouragement to step out of our comfort zones.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The comfort and reassurance he provides.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The security we feel when he's around.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The bond we share that grows stronger each day.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The fact that he drops everything when we need him, especially if it has to do with driving (he openly dislikes driving).</span></li>
+      <li><span class="heart">❤️</span><span class="text">His unwavering support for things and people he believes in.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The important life lessons he has taught us, which we will pass on to our children one day.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His love and dedication to his grandchildren.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The everyday messages asking how our day was.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The fact that he tells us every day that he loves us.</span></li>
+      <li><span class="heart">❤️</span><span class="text">His dedication to providing for his loved ones, even when he is unwell.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The loudest snorer known to mankind (sneezes as well).</span></li>
+      <li><span class="heart">❤️</span><span class="text">His ability to make everything seem easy when it isn't.</span></li>
+      <li><span class="heart">❤️</span><span class="text">The amount of pride he has when it comes to family.</span></li>
     </ul>
     <div class="irreplaceable">Daddy is Irreplaceable!</div>
   </main>
